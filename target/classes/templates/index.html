@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Rohit's</title>
+    <link rel="icon" type="image/x-icon" href="/img/hss.jpg">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    .header{
+    background-color: #B8994B;
+    }
+.contact-section .form-control{
+  border: 1px solid  #2fbfbc;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  box-shadow: none;
+}
+.logo {
+  display: block;
+  margin: 0 auto;
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+}
+
+@media (max-width: 600px) {
+  .logo {
+    width: 75px;
+    height: 75px;
+  }
+}
+
+h2 {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 900;
+  color: #101f1d;
+  font-size: 35px;
+  letter-spacing: 1.25px;
+  margin-top: 0;
+}
+.container{
+  font-family: 'Raleway', sans-serif;
+  font-weight: 500;
+  color: #101f1d;
+  font-size: 15px;
+  letter-spacing: 1.25px;
+  margin-top: 0;
+}
+.contact-fields {
+  padding: 40px 0 0;
+}
+.phone {
+  padding-top: 50px;
+}
+.phone,
+.email,
+.working-hours {
+  margin-bottom:30px;
+}
+.phone a,
+.email a,
+.location a {
+  color: #fd4f00;
+  font-size:18px;
+}
+.contact-h2 {
+  color: #fd4f00;
+  padding-top:20px;
+}
+.contact-fields .form-group {
+  margin-bottom: 35px;
+}
+.contact-info {
+  margin-top: -40px;
+}
+.contact-fields .form-group input,
+.contact-fields .form-group textarea {
+  font-size: 16px;
+}
+.location a.btn.btn-accent {
+  padding: 12px 26px 10px;
+  margin-top: 30px;
+  font-size: 16px;
+}
+.location a.btn.btn-accent img {
+  margin-right: 20px;
+}
+.location hr {
+  margin-bottom: 10px;
+}
+.btn {
+  font-size: 15px;
+  padding: 22px 46px 18px;
+  line-height: 1;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 0;
+  position: relative;
+  letter-spacing: 0.3px;
+}
+.btn.btn-accent {
+  background: #2fbfbc;
+  color: white;
+}
+.btn.btn-accent:hover {
+  background: #269694;
+}
+.ct-newsletter-section .container {
+  width: 100%;
+  max-width: 1360px;
+}
+.ct-section-head,
+.ct-section-header {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 900;
+  color: #101f1d;
+  font-size: 35px;
+  text-transform: uppercase;
+  padding-top: 45px;
+  letter-spacing: 1.25px;
+  margin-bottom: 5px;
+}
+.ct-section-header {
+  text-align: center;
+}
+.btn.btn-dark {
+  background: #111f1d;
+  color: white;
+}
+.btn {
+  font-size: 15px;
+  padding: 22px 46px 18px;
+  line-height: 1;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 0;
+  position: relative;
+  letter-spacing: 0.3px;
+}
+.cp-text{
+  color: rgba(0,0,0,.7);
+  text-shadow: 0 1px rgba(255, 255, 255, 0.1);
+  text-align: center;
+  padding:5%;
+}
+@media screen and (min-width: 980px) {
+  .contact-info {
+    padding-left: 110px;
+  }
+}
+</style>
+</head>
+<body>
+<section clas="header">
+<img class="logo" th:src="@{/img/hss.jpg}" align="center">
+<h1 align="center">Rohit's General store</h1>
+<h2 align="center">Customer Management Portal</h2>
+<br/>
+<div class="container" align="center">
+        <div class="page-header">
+            <a th:href="@{/rohit-shop/v1}" class="btn btn-accent" >Home</a>
+            <a th:href="@{/rohit-shop/v1/addCustomer}" class="btn btn-accent" >Add Customer</a>
+            <a th:href="@{/rohit-shop/v1/addPurchase}" class="btn btn-accent" >Add Purchase</a>
+            <a th:href="@{/rohit-shop/v1/discount}" class="btn btn-accent" >Change Discount Rate</a>
+            <a th:href="@{/rohit-shop/v1/report}" class="btn btn-accent" >Get Report</a>
+            <a th:href="@{/rohit-shop/v1/redeemDiscount}" class="btn btn-accent" >Redeem Discount</a>
+      
+        </div>
+    <div class="page-header">
+
+        <div class="row" align="center">
+            <h3 >Find customer points by UID or Phone</h3>
+            <form th:action="@{/rohit-shop/v1/getPoints}" method="get">
+                <input type="text" name="keyword" th:value="${keyword}"  placeholder="Find by UID & Mobile" size="50" >
+                <button type="submit" class="btn btn-accent" >Search</button>
+                <button type="submit" class="btn btn-accent" >Reset</button>
+            </form>
+        </div>
+    </div>
+</div>
+</section>
+<div class="container" align="center">
+    <div class="page-header" id="banner">
+        <div class="container">
+            <div class="col-lg-13 col-md-12 col-sm-10" align="center">
+                <h1>Customers Dashboard</h1>
+                <br/>
+                <h3>Current discount rate</h3>
+                <h3 th:text="${discount}"></h3>
+                <br/>
+                <table class="table table-striped table-hover" align="center">
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>UID</th>
+                        <th>Mobile</th>
+                        <th>Points</th>
+                        <th>Cashback Value</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="dashboards : ${dashboard}">
+                        <td th:text="${dashboards.name}"></td>
+                        <td th:text="${dashboards.uid}"></td>
+                        <td th:text="${dashboards.mobileNumber}"></td>
+                        <td th:text="${dashboards.points}"></td>
+                        <td th:text="${dashboards.cashbackValue}"></td>
+                        <td align="center"><a th:href="@{/rohit-shop/v1/viewPurchase(mobile=${dashboards.mobileNumber})}" class="btn btn-accent" >View Purchase</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<p class="cp-text">
+    © Copyright 2023 Rohit Singh Yadav. All rights reserved.
+</p>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+{"properties": [
+  {
+    "name": "management.health.diskspace.threshold",
+    "type": "java.lang.String",
+    "description": "A description for 'management.health.diskspace.threshold'"
+  },
+  {
+    "name": "management.endpoints.web.base-path",
+    "type": "java.lang.String",
+    "description": "A description for 'management.endpoints.web.base-path'"
+  },
+  {
+    "name": "management.endpoint.health.show-details",
+    "type": "java.lang.String",
+    "description": "A description for 'management.endpoint.health.show-details'"
+  }
+]}
